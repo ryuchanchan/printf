@@ -2,58 +2,6 @@
 #include "libft.h"
 #define PATTERN "cspdiuxX%"
 
-int	ft_putchar(char c)
-{
-    return (write (1, &c, 1));
-}
-
-int ft_putstr(char *str)
-{
-    char    str_count = '\0';
-    int     i;
-
-    i = 0;
-    while (str[i] != '\0')
-    {
-        str_count += ft_putchar(str[i]);
-        i++;
-    }
-    return (str_count);
-}
-
-int str_counter(char *c)
-{
-    int i;
-
-    if (!c)
-        return (0);
-    i = ft_strlen(c);
-    ft_putstr(c);
-    return (i);
-}
-
-int put_s(char *s)
-{
-    int size;
-
-    if (s == NULL)
-        s = "(null)";
-     size = ft_strlen(s);
-     ft_putstr(s);
-     return (size);
-}
-
-int put_d_i(int i)
-{
-    char    *s;
-    int     n;
-
-    s = ft_itoa(i);
-    n = str_counter(s);
-    free(s);
-    return (n);
-}
-
 static char *change_base(unsigned long long us, int b, char *r, int c)
 {
     while (us != 0)
@@ -90,19 +38,7 @@ char    *point_base(unsigned long long p, int base)
     return (rtn);
 }
 
-int put_p(unsigned long long p)
-{
-    char    *point;
-    int     n;
-
-    point = lower_case(point_base(p, 16));
-    n = str_counter("0x");
-    n += str_counter(point);
-    free(point);
-    return (n);
-}
-
-static int put_nbr_u(unsigned long long n)
+int put_nbr_u(unsigned long long n)
 {
     char str;
     unsigned long long tmp;
@@ -120,30 +56,6 @@ static int put_nbr_u(unsigned long long n)
     str = '0' + n % 10;
     ft_putchar(str);
     return (t + 1);
-}
-
-int put_u(unsigned long long u)
-{
-    int n;
-
-    n = 0;
-    n = put_nbr_u(u);
-    return (n);
-}
-
-int put_xX(unsigned int i, int f)
-{
-    char *hex;
-    int n;
-
-    if (!i)
-        i = 0;
-    hex = point_base((unsigned long long)i, 16);
-    if (f == 1)
-        hex = lower_case(hex);
-    n = str_counter(hex);
-    free(hex);
-    return (n);
 }
 
 int	find_argument(const char *fmt, int i, va_list ap)
