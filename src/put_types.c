@@ -29,7 +29,7 @@ int put_p(unsigned long long p)
     int     n;
 
     point = lower_case(point_base(p, 16));
-    n = str_counter("0x");
+    n = ft_putstr("0x");
     n += str_counter(point);
     free(point);
     return (n);

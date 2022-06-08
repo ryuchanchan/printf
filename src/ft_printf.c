@@ -1,62 +1,6 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static char *change_base(unsigned long long us, int b, char *r, int c)
-{
-    while (us != 0)
-    {
-        if ((us % b) < 10)
-            r[c -1] = (us % b) + 48;
-        else
-            r[c -1] = (us % b) + 55;
-        us /= b;
-        c--;
-    }
-    return (r);
-}
-
-char    *point_base(unsigned long long p, int base)
-{
-    char *rtn;
-    unsigned long long us;
-    int count;
-
-    count = 0;
-    us = p;
-    if (p == 0)
-        return (ft_strdup("0"));
-    while (p != 0)
-    {
-        p = p /base;
-        count++;
-    }
-    rtn = ft_calloc(count + 1, sizeof(char));
-    if (!rtn)
-        return (0);
-    rtn = change_base(us, base, rtn, count);
-    return (rtn);
-}
-
-int put_nbr_u(unsigned long long n)
-{
-    char str;
-    unsigned long long tmp;
-    size_t t;
-
-    tmp = n;
-    t = 0;
-    while (9 < tmp)
-    {
-        tmp /= 10;
-        t++;
-    }
-    if (9 < n)
-        put_nbr_u(n / 10);
-    str = '0' + n % 10;
-    ft_putchar(str);
-    return (t + 1);
-}
-
 int	find_argument(const char *fmt, int i, va_list ap)
 {
     if (fmt[i + 1] == '%')
