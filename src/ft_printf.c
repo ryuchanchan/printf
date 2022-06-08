@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 #include "libft.h"
-#define PATTERN "cspdiuxX%"
 
 static char *change_base(unsigned long long us, int b, char *r, int c)
 {
@@ -94,16 +93,23 @@ int	ft_printf(const char *format, ...)
     ret = 0;
     while (format[i])
     {
-        if (format[i] == '%' && ft_strchr(PATTERN, format[i + 1]))
+        if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
         {
             ret += find_argument(format, i, ap);
             i++;
         }
         else
             ret += ft_putchar(format[i]);
+        if (ret >= INT_MAX)
+                return (-1);
         i++;
     }
     va_end(ap);
     free((char *)storage);
     return (ret);
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+// system("leaks -q a.out");
+// }

@@ -1,7 +1,7 @@
 NAME	= libftprintf.a
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= ./src/ft_printf.c ./src/lower_case.c ./src/utils.c ./src/put_types.c
+SRCS	= ./src/ft_printf.c ./src/utils.c ./src/put_types.c
 LIBS	= libft.a
 OBJS	= $(SRCS:.c=.o)
 INCS	= ./include
@@ -14,7 +14,8 @@ $(NAME): $(OBJS)
 	@cp libft/libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 
-.c.o:
+#.c.o:
+%.o: %.c
 	${CC} ${FLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
 re: fclean all
 fclean: clean

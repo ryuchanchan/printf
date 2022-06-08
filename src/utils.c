@@ -30,3 +30,16 @@ int str_counter(char *c)
     ft_putstr(c);
     return (i);
 }
+
+char	*lower_case(char *c)
+{
+	int i;
+
+	i = 0;
+	while (c[i])
+	{
+		c[i] = ft_tolower(c[i]);
+		i++;
+	}
+	return (c);
+}
