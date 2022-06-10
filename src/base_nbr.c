@@ -40,19 +40,19 @@ char    *point_base(unsigned long long p, int base)
 int put_nbr_u(unsigned long long n)
 {
     char str;
-    unsigned long long tmp;
-    size_t t;
+    unsigned long long num;
+    size_t i;
 
-    tmp = n;
-    t = 0;
-    while (9 < tmp)
+    num = n;
+    i = 0;
+    while (10 <= num)
     {
-        tmp /= 10;
-        t++;
+        num /= 10;
+        i++;
     }
-    if (9 < n)
+    if (10 <= n)
         put_nbr_u(n / 10);
     str = '0' + n % 10;
     ft_putchar(str);
-    return (t + 1);
+    return (i + 1);
 }

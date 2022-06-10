@@ -26,8 +26,8 @@ int	ft_printf(const char *format, ...)
 {
     const char  *storage;
     va_list     ap;
-    int         i;
-    int         ret;
+    size_t         i;
+    size_t         ret;
 
     storage = ft_strdup(format);
     if (!storage)
@@ -43,9 +43,11 @@ int	ft_printf(const char *format, ...)
             i++;
         }
         else
+        {
             ret += ft_putchar(format[i]);
-        if (ret >= INT_MAX)
+            if (ret >= INT_MAX)
                 return (-1);
+        }
         i++;
     }
     va_end(ap);
