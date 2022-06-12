@@ -44,12 +44,10 @@ int	ft_printf(const char *format, ...)
             i++;
         }
         else
-        {
-            //printf("%zu\n", ret);
-            if (ret >= INT_MAX)
-                return (ft_putchar('-') + ft_putchar('1'));
             ret += ft_putchar(format[i]);
-        }
+        //printf("%zu\n", ret);
+        if (ret >= INT_MAX)
+            return (-1);
         i++;
     }
     va_end(ap);
@@ -57,7 +55,7 @@ int	ft_printf(const char *format, ...)
     return (ret);
 }
 
-// __attribute__((destructor))
-// static void destructor() {
-// system("leaks -q a.out");
-// }
+__attribute__((destructor))
+static void destructor() {
+system("leaks -q a.out");
+}
