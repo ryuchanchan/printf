@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 #include "libft.h"
-
+#include <stdio.h>
 int	find_argument(const char *fmt, int i, va_list ap)
 {
     if (fmt[i + 1] == '%')
@@ -37,6 +37,7 @@ int	ft_printf(const char *format, ...)
     ret = 0;
     while (format[i])
     {
+        
         if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
         {
             ret += find_argument(format, i, ap);
@@ -44,9 +45,10 @@ int	ft_printf(const char *format, ...)
         }
         else
         {
-            ret += ft_putchar(format[i]);
+            //printf("%zu\n", ret);
             if (ret >= INT_MAX)
-                return (-1);
+                return (ft_putchar('-') + ft_putchar('1'));
+            ret += ft_putchar(format[i]);
         }
         i++;
     }

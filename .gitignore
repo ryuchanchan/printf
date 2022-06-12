@@ -1,5 +1,4 @@
 use_file
-ft_printf_tester
-printfTester
+./ft_printf_tester
+./printfTester
 a.out
-./*.o
