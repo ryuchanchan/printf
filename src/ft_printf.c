@@ -46,7 +46,7 @@ int	ft_printf(const char *format, ...)
         else
             ret += ft_putchar(format[i]);
         //printf("%zu\n", ret);
-        if (ret >= INT_MAX)
+        if (ret >= 10)
             return (-1);
         i++;
     }

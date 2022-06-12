@@ -76,7 +76,7 @@ int main()
     // //callocとmemsetで最大サイズを用意する,それをINT_MAX - 1
     char *ch = calloc(INT_MAX, sizeof(char)); //(確保するメモリの個数, メモリ１つあたりのバイト数)
     ft_memset(ch, 'a', INT_MAX);//(メモリのポインタ,セットする値,セットするサイズ)
-    ft_printf("%d\n", printf("%s\n", ch));
+    ft_printf("%d\n", ft_printf("%s\n", ch));
     free(ch);
 
     return (0);
