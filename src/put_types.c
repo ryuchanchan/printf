@@ -20,6 +20,8 @@ int	put_s(char	*s)
 	if (s == NULL)
 		s = "(null)";
 	size = ft_strlen(s);
+	if (size >= INT_MAX)
+		return (-1);
 	ft_putstr(s);
 	return (size);
 }

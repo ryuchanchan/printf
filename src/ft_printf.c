@@ -34,33 +34,41 @@ int	find_argument(const char *fmt, int i, va_list ap)
 	return (0);
 }
 
-int	ft_printf(const char	*format, ...)
+int count_put(va_list ap, const char *format)
 {
-	const char	*storage;
-	va_list		ap;
-	size_t		i;
-	size_t		ret;
+    size_t 	i;
+    size_t	ret;
 
-	storage = ft_strdup(format);
-	if (!storage)
-		return (0);
-	va_start(ap, format);
-	i = 0;
-	ret = 0;
-	while (format[i])
-	{
-		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
+    i = 0;
+    ret = 0;
+    while (format[i])
+    {
+        if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
 		{
 			ret += find_argument(format, i, ap);
 			i++;
 		}
 		else
 			ret += ft_putchar(format[i]);
-		if (ret >= 10)
+		if (ret >= INT_MAX)
 			return (-1);
 		i++;
-	}
+    }
+    return (ret);
+}
+
+int	ft_printf(const char	*format, ...)
+{
+	const char	*storage;
+	va_list		ap;
+	int num;
+
+	storage = ft_strdup(format);
+	if (!storage)
+		return (0);
+	va_start(ap, format);
+	num = count_put(ap, format);
 	va_end(ap);
 	free((char *)storage);
-	return (ret);
+	return (num);
 }
