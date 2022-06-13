@@ -6,7 +6,7 @@
 /*   By: rykawamu </var/mail/rykawamu>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 08:50:17 by rykawamu          #+#    #+#             */
-/*   Updated: 2022/06/13 08:54:22 by rykawamu         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:35:02 by rykawamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	put_xX(unsigned int	i, int	f)
 		i = 0;
 	hex = point_base((unsigned long long)i, 16);
 	if (!hex)
-		return (0);	
+		return (0);
 	if (f == 1)
 		hex = lower_case(hex);
 	n = str_counter(hex);

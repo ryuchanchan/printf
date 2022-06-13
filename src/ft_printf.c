@@ -6,7 +6,7 @@
 /*   By: rykawamu </var/mail/rykawamu>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 08:43:07 by rykawamu          #+#    #+#             */
-/*   Updated: 2022/06/13 08:49:05 by rykawamu         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:34:05 by rykawamu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ static int	find_argument(const char *fmt, int i, va_list ap)
 	return (0);
 }
 
-static int count_put(va_list ap, const char *format)
+static int	count_put(va_list	ap, const char	*format)
 {
-    size_t 	i;
-    size_t	ret;
+	size_t	i;
+	size_t	ret;
 
-    i = 0;
-    ret = 0;
-    while (format[i])
-    {
-        if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
+	i = 0;
+	ret = 0;
+	while (format[i])
+	{
+		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]))
 		{
 			ret += find_argument(format, i, ap);
 			i++;
@@ -53,15 +53,15 @@ static int count_put(va_list ap, const char *format)
 		if (ret >= INT_MAX)
 			return (-1);
 		i++;
-    }
-    return (ret);
+	}
+	return (ret);
 }
 
 int	ft_printf(const char	*format, ...)
 {
 	const char	*storage;
 	va_list		ap;
-	int num;
+	int			num;
 
 	storage = ft_strdup(format);
 	if (!storage)
@@ -71,9 +71,4 @@ int	ft_printf(const char	*format, ...)
 	va_end(ap);
 	free((char *)storage);
 	return (num);
-}
-
-__attribute__((destructor))
-static void destructor() {
-system("leaks -q a.out");
 }
