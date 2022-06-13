@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int	find_argument(const char *fmt, int i, va_list ap)
+static int	find_argument(const char *fmt, int i, va_list ap)
 {
 	if (fmt[i + 1] == '%')
 		return (ft_putchar(fmt[i + 1]));
@@ -34,7 +34,7 @@ int	find_argument(const char *fmt, int i, va_list ap)
 	return (0);
 }
 
-int count_put(va_list ap, const char *format)
+static int count_put(va_list ap, const char *format)
 {
     size_t 	i;
     size_t	ret;
@@ -71,4 +71,9 @@ int	ft_printf(const char	*format, ...)
 	va_end(ap);
 	free((char *)storage);
 	return (num);
+}
+
+__attribute__((destructor))
+static void destructor() {
+system("leaks -q a.out");
 }
