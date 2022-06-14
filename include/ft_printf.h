@@ -17,7 +17,6 @@
 # include <limits.h>
 # include <stdarg.h> 
 # include <stdlib.h>
-//int		put_nbr_u(unsigned long long				n);
 int		str_counter(char							*c);
 int		ft_putchar(char								c);
 int		ft_putstr(char								*str);

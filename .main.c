@@ -51,6 +51,7 @@ int main()
     printf("%u\n", 42);
     ft_printf("%u\n", 0);
     printf("%u\n", 0);
+    printf("%u\n", INT_MAX);
     ft_printf("%u\n", INT_MAX);
 
     ft_printf("----pattern(x)-------\n");

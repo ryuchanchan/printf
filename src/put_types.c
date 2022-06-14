@@ -73,15 +73,6 @@ int	put_u(unsigned long long	n)
 	return (i + 1);
 }
 
-// int	put_u(unsigned long long	u)
-// {
-// 	int	n;
-
-// 	n = 0;
-// 	n = put_nbr_u(u);
-// 	return (n);
-// }
-
 int	put_xX(unsigned int	i, int	f)
 {
 	char	*hex;
