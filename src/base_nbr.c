@@ -50,22 +50,22 @@ char	*point_base(unsigned long long p, int base)
 	return (data);
 }
 
-int	put_nbr_u(unsigned long long	n)
-{
-	char				str;
-	unsigned long long	num;
-	size_t				i;
+// int	put_nbr_u(unsigned long long	n)
+// {
+// 	char				str;
+// 	unsigned long long	num;
+// 	size_t				i;
 
-	num = n;
-	i = 0;
-	while (10 <= num)
-	{
-		num /= 10;
-		i++;
-	}
-	if (10 <= n)
-		put_nbr_u(n / 10);
-	str = '0' + n % 10;
-	ft_putchar(str);
-	return (i + 1);
-}
+// 	num = n;
+// 	i = 0;
+// 	while (10 <= num)
+// 	{
+// 		num /= 10;
+// 		i++;
+// 	}
+// 	if (10 <= n)
+// 		put_nbr_u(n / 10);
+// 	str = '0' + n % 10;
+// 	ft_putchar(str);
+// 	return (i + 1);
+// }

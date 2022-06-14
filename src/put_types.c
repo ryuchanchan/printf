@@ -53,14 +53,34 @@ int	put_p(unsigned long long	p)
 	return (n);
 }
 
-int	put_u(unsigned long long	u)
+int	put_u(unsigned long long	n)
 {
-	int	n;
+	char				str;
+	unsigned long long	num;
+	size_t				i;
 
-	n = 0;
-	n = put_nbr_u(u);
-	return (n);
+	num = n;
+	i = 0;
+	while (10 <= num)
+	{
+		num /= 10;
+		i++;
+	}
+	if (10 <= n)
+		put_u(n / 10);
+	str = '0' + n % 10;
+	ft_putchar(str);
+	return (i + 1);
 }
+
+// int	put_u(unsigned long long	u)
+// {
+// 	int	n;
+
+// 	n = 0;
+// 	n = put_nbr_u(u);
+// 	return (n);
+// }
 
 int	put_xX(unsigned int	i, int	f)
 {

@@ -26,14 +26,13 @@ $(NAME): $(OBJS)
 	@cp libft/libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 
-#.c.o:
 %.o: %.c
 	${CC} ${FLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
 re: fclean all
 fclean: clean
 	$(RM) $(NAME)
-	make fclean -C ./libft
+	@make fclean -C ./libft
 clean:
 	$(RM) $(OBJS)
-	make clean -C ./libft
+	@make clean -C ./libft
 .PHONY: all clean fclean re
