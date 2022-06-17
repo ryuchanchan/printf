@@ -11,13 +11,12 @@
 # **************************************************************************** #
 
 NAME	= libftprintf.a
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 SRCS	= ./src/ft_printf.c ./src/utils.c ./src/put_types.c ./src/base_nbr.c
 LIBS	= libft.a
 OBJS	= $(SRCS:.c=.o)
 INCS	= ./include
-RM		= rm -f
 
 all: $(NAME)
 
@@ -27,7 +26,7 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	${CC} ${FLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I ${INCS} -c $< -o ${<:.c=.o}
 re: fclean all
 fclean: clean
 	$(RM) $(NAME)

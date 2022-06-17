@@ -59,16 +59,11 @@ static int	count_put(va_list	ap, const char	*format)
 
 int	ft_printf(const char	*format, ...)
 {
-	const char	*storage;
 	va_list		ap;
 	int			num;
 
-	storage = ft_strdup(format);
-	if (!storage)
-		return (0);
 	va_start(ap, format);
 	num = count_put(ap, format);
 	va_end(ap);
-	free((char *)storage);
 	return (num);
 }
