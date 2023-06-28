@@ -6,6 +6,9 @@
 
 int main()
 {
+    printf("-----test2-----\n");
+    ft_printf("%d\n", ft_printf("small\n"));
+    printf("%d\n", printf("small\n"));
     ft_printf("----pattern(c)-------\n");
     printf("%c small string\n", 'a');
     ft_printf("%c small string\n", 'a');
@@ -23,7 +26,7 @@ int main()
     printf("%s\n", "hoge");
     printf("%s\n", "");
     printf("%s\n", "");
-    //printf("%s\n", NULL);
+    printf("%s\n", NULL);
     ft_printf("%s\n", NULL);
 
     ft_printf("----pattern(p)-------\n");
@@ -72,6 +75,9 @@ int main()
     ft_printf("----all pattern-------\n");
     printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
     ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-    
+    char *ch = calloc(INT_MAX, sizeof(char)); //(確保するメモリの個数, メモリ１つあたりのバイト数)
+    ft_memset(ch, 'a', INT_MAX);//(メモリのポインタ,セットする値,セットするサイズ)
+    ft_printf("%d\n", ft_printf("%s\n", ch));
+    free(ch);    
     return (0);
 }
